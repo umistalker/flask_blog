@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block app_content %}
+    {% import 'bootstrap/wtf.html' as wtf %}
+    <h1 align="center">Edit Post</h1>
+    <style type="text/css">
+        .row {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            overflow: auto;
+        }
+
+        .col-md-4 {
+            width: 250px;
+            height: 250px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+        }
+    </style>
+    <div class="row">
+        <div class="col-md-4">
+            {{ wtf.quick_form(form) }}
+        </div>
+    </div>
+    </form>
+{% endblock %}

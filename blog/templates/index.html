@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block app_content %}
+    {% import 'bootstrap/wtf.html' as wtf %}
+    <h1 align="center">Hello {{ current_user.username.title() }}</h1>
+    {% if form %}
+        {#        <form action="" method="post">#}
+        {#            {{ form.hidden_tag() }}#}
+        {#            <p>#}
+        {#                {{ form.post.lable }}<br>#}
+        {#                {{ form.post(col=32, rows=4) }}<br>#}
+        {#                {% for errors in form.post.errors %}#}
+        {#                    <span style="color: red;">[{{ error }}]</span>#}
+        {#                {% endfor %}#}
+        {#            </p>#}
+        {#            <p>{{ form.submit() }}</p>#}
+        {#        </form>#}
+
+        <div class="row">
+            <div class="col-md-4">
+                {{ wtf.quick_form(form) }}
+            </div>
+        </div>
+    {% endif %}
+    <h3>Posts:</h3>
+    {% for post in posts %}
+        {% include '_post.html' %}
+    {% endfor %}
+    {#    {% if prev_url %}#}
+    {#        <a href="{{ prev_url }}">New posts</a>#}
+    {#    {% endif %}#}
+    {#    {% if next_url %}#}
+    {#        <a href="{{ next_url }}">Old posts</a>#}
+    {#    {% endif %}#}
+    <nav aria-label="...">
+        <ul class="pager">
+            <li class="previous{% if not prev_url %} disabled{% endif %}">
+                <a href="{{ prev_url or '#' }}">
+                    <span aria-hidden="true">&larr;</span> Newer posts
+                </a>
+            </li>
+            <li class="next{% if not next_url %} disabled{% endif %}">
+                <a href="{{ next_url or '#' }}">
+                    Older posts <span aria-hidden="true">&rarr;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+{% endblock %}

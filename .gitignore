@@ -1,0 +1,4 @@
+/.venv/
+/.idea/
+app.db
+config.env
