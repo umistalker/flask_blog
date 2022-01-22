@@ -1,1 +1,2 @@
-web: gunicorn --bind 0.0.0.0:$port App:app
+web: gunicorn runp-heroku:app
+init: python db_create.py
