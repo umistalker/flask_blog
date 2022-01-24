@@ -14,7 +14,11 @@ OPENID_PROVIDERS = [
 ]
 BASEDIR = os.path.abspath(os.path.dirname(__file__))
 
-SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(BASEDIR, 'app.db')
+SQLALCHEMY_DATABASE_URI = os.environ.get('SECRET_KEY') or 'you-will-never-guess'
+SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', '').replace(
+    'postgres://', 'postgresql://') or \
+                          'sqlite:///' + os.path.join(basedir, 'app.db')
+SQLALCHEMY_TRACK_MODIFICATIONS = False
 SQLALCHEMY_MIGRATE_REPO = os.path.join(BASEDIR, 'db_repository')
 
 MAIL_SERVER = os.environ.get('MAIL_SERVER')
